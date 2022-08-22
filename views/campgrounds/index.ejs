@@ -1,34 +1,39 @@
-<% layout('layouts/boilerplate') %> 
+<% layout('layouts/boilerplate') %>
     <h1>All Campgrounds</h1>
     <div>
-        <a class="btn btn-dark" href="/campgrounds/new">Add Campground</a>
+        <a class="btn btn-warning" href="/campgrounds/new"><strong>+ Add Campground</strong></a>
     </div>
-  
-        <% for (let campground of campgrounds){%>
+
+    <% for (let campground of campgrounds){%>
         <div class="card mb-3">
             <div class="row">
                 <div class="col-md-4">
-                    <img class="img-fluid" alt="" src="<%= campground.image %>">
+                    <% if(campground.images.length) {%>
+                        <img class="img-fluid" alt="" src="<%= campground.images[0].url%>">
+                        <% } else { %>
+                            <img class="img-fluid" alt=""
+                                src="https://res.cloudinary.com/kaydenukr/image/upload/v1660976515/YelpCamp/tzpdxm2hbsr1mojci5eq.jpg">
+                            <% } %>
                 </div>
                 <div class="col-mg-8">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <%= campground.title %> 
+                            <%= campground.title %>
                         </h5>
                         <p class="card-text">
                             <%= campground.description %>
                         </p>
                         <p class="card-text">
-                            <small class="text-muted"><%= campground.location %></small>
+                            <small class="text-muted">
+                                <%= campground.location %>
+                            </small>
                         </p>
                         <a href="/campgrounds/<%= campground._id %> " class="btn btn-primary">
-                            View <%= campground.title %> 
+                            View <%= campground.title %>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <% }%>
-    
 
+        <% };%>
