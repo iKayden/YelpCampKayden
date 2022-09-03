@@ -6,20 +6,21 @@ const Campground = require('../models/campground');
 main().catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://localhost:27017/yelp-camp');
+    await mongoose.connect('mongodb://127.0.0.1:27017/yelp-camp');
     console.log('MongoDb is connected');
-};
+}
 
 const sample = array => array[Math.floor(Math.random() * array.length)];
 
 
 const seedDB = async () => {
     await Campground.deleteMany({});
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 300; i++) {
         const random1000 = Math.floor(Math.random() * 1000);
         const randPrice = Math.floor(Math.random() * 20) + 10;
         const camp = new Campground({
-            author: '62fb1d1151078e0f9cb8c7fa',
+            //Your User ID
+            author: '62faa1bc0b78051c94144dbf',
             location: `${cities[random1000].city}, ${cities[random1000].state}`,
             title: `${sample(descriptors)} ${sample(places)}`,
 
@@ -27,16 +28,19 @@ const seedDB = async () => {
             price: randPrice,
             geometry: {
                 type: 'Point',
-                coordinates: [-113.1331, 47.0202]
+                coordinates: [
+                    cities[random1000].longitude,
+                    cities[random1000].latitude
+                ]
             },
             images: [
                 {
-                    url: 'https://res.cloudinary.com/kaydenukr/image/upload/v1660867195/YelpCamp/pxzoqvmcbjlozxrvcqlk.jpg',
-                    filename: 'YelpCamp/pxzoqvmcbjlozxrvcqlk'
+                    url: 'https://res.cloudinary.com/kaydenukr/image/upload/v1660883214/YelpCamp/sybnpdtwavlrxizdmemx.jpg',
+                    filename: 'YelpCamp/sybnpdtwavlrxizdmemx'
                 },
                 {
-                    url: 'https://res.cloudinary.com/kaydenukr/image/upload/v1660867195/YelpCamp/epa4uhabei4z5biiyd33.jpg',
-                    filename: 'YelpCamp/epa4uhabei4z5biiyd33'
+                    url: 'https://res.cloudinary.com/kaydenukr/image/upload/v1660937152/YelpCamp/v8xipdtzc87l2b3dowpq.jpg',
+                    filename: 'YelpCamp/v8xipdtzc87l2b3dowpq'
                 }
             ]
         })
