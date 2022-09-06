@@ -4,12 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>YelpCamp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 
-<body>
-    <h1>HOME! YELP CAMP!</h1>
+<body class="d-flex text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <header class="mb-auto">
+            <div>
+                <a href="#"><h3 class="float-md-start mb-0" id="navHead">YelpCamp</h3></a>
+                <nav class="nav nav-masthead justify-content-center float-md-end">
+                    <a href="#" aria-current="page" class="nav-link active">Home</a>
+                    <a href="/campgrounds" aria-current="page" class="nav-link">Campgrounds</a>
+                    <% if(!currentUser) { %> 
+                        <a href="/login" class="nav-link">Login</a>
+                        <a href="/register" class="nav-link">Register</a>
+                    <% } else { %> 
+                        <a href="/logout" class="nav-link">Logout</a>
+                    <% } %> 
+                </nav>
+            </div>
+        </header>
+        <main class="px-3">
 
+            <p class="lead fs-1"> Welcome to <strong>YelpCamp</strong>! <br></p>
+            <p class="fs-5">
+                Explore the nature with numerous campgrounds on our site. <br>
+                Hundreds of spectacular places and fellow campers are waiting for you. <br>
+                Share some of your own places and experiences with our new rating system.
+            </p> 
+            <a href="/campgrounds" class="btn btn-lg btn-secondary mt-2 font-weight-bold border-white bg-white">View Campgrounds</a>
+        </main>
+<footer class="mt-auto text-white-50">
+    <p>&copy; 2022 Kayden</p>
+</footer>
+
+    </div>
+
+
+
+
+
+    <!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+<script src="/javascripts/validateForms.js"></script>
 </body>
 
 </html>
